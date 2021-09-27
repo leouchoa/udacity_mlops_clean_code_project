@@ -72,12 +72,8 @@ For `python churn_library.py` you can expect your directory to be populated as i
 
 ```
 .
-├── churn_library.py
-├── churn_notebook.ipynb
-├── churn_script_logging_and_tests.py
 ├── data
 │   └── bank_data.csv
-├── Guide.ipynb
 ├── images
 │   ├── eda
 │   │   ├── churn_distribution.png
@@ -88,10 +84,12 @@ For `python churn_library.py` you can expect your directory to be populated as i
 │   └── results
 │       ├── feature_importance_shap.png
 │       ├── feature_importances.png
-│       ├── logistic_results.png
-│       └── rf_results.png
+│       └── roc_curve_result.png
 ├── logs
 │   └── churn_library.log
+├── model_eval_metrics
+│   ├── lr_metrics.csv
+│   └── rf_metrics.csv
 ├── models
 │   ├── logistic_model.pkl
 │   └── rfc_model.pkl
@@ -99,9 +97,15 @@ For `python churn_library.py` you can expect your directory to be populated as i
 │   ├── churn_library.cpython-36.pyc
 │   ├── churn_library.cpython-38.pyc
 │   └── churn_script_logging_and_tests.cpython-38-pytest-6.2.5.pyc
-└── README.md
+├── churn_library.py
+├── churn_notebook.ipynb
+├── churn_script_logging_and_tests.py
+├── Guide.ipynb
+├── pytest.log
+├── README.md
+└── requirements.txt
 
-7 directories, 21 files
+8 directories, 24 files
 ```
 
 
