@@ -22,6 +22,9 @@ import seaborn as sns
 sns.set()
 
 
+import os
+os.environ['QT_QPA_PLATFORM']='offscreen'
+
 keep_cols = ['Customer_Age', 'Dependent_count', 'Months_on_book',
              'Total_Relationship_Count', 'Months_Inactive_12_mon',
              'Contacts_Count_12_mon', 'Credit_Limit', 'Total_Revolving_Bal',
@@ -66,6 +69,7 @@ def perform_eda(churn_df: pd.DataFrame) -> None:
         'images/eda/churn_distribution.png',
         bbox_inches='tight',
         dpi=150)
+    plt.clf()
 
     # plot+save costumer age histogram
     fig = plt.figure(figsize=(20, 10))
@@ -74,27 +78,33 @@ def perform_eda(churn_df: pd.DataFrame) -> None:
         'images/eda/customer_age_distribution.png',
         bbox_inches='tight',
         dpi=150)
+    plt.clf()
 
     # plot+save total transaction count
     fig = plt.figure(figsize=(20, 10))
-    sns.displot(churn_df['Total_Trans_Ct'])
+    sns.distplot(churn_df['Total_Trans_Ct'])
     fig.savefig(
         'images/eda/total_transaction_distribution.png',
         bbox_inches='tight',
         dpi=150)
+    plt.clf()
 
-    # plot+save heatmap
-    plt.figure(figsize=(20,10)) 
-    churn_df['Marital_Status'].value_counts('normalize').plot(kind='bar')
+    # plot+save marital status
+    sns.barplot(
+        x=churn_df['Marital_Status'].value_counts().index,
+        y=churn_df['Marital_Status'].value_counts('normalize').values,
+        data=churn_df
+    )
     fig.savefig(
-        'images/eda/marital_status_distribution.png',
-        bbox_inches='tight',
-        dpi=150)
+        'images/eda/marital_status_distribution.png')
+    plt.clf()
 
     # plot+save heatmap
     fig = plt.figure(figsize=(20, 10))
     sns.heatmap(churn_df.corr(), annot=False, cmap='Dark2_r', linewidths=2)
-    fig.savefig('images/eda/heatmap.png', bbox_inches='tight', dpi=150)
+    plt.tight_layout()
+    fig.savefig('images/eda/heatmap.png')
+    plt.clf()
 
 
 def encoder_helper(churn_df: pd.DataFrame, category_lst: list, response: str):
@@ -168,38 +178,99 @@ def classification_report_image(y_train: pd.Series,
              None
     '''
     # Random Forest Results
-    plt.rc('figure', figsize=(5, 5))
-    plt.text(0.01, 1.25, str('Random Forest Train'), {
-             'fontsize': 10}, fontproperties='monospace')
-    plt.text(0.01, 0.05, str(classification_report(y_test, y_test_preds_rf)), {
-             'fontsize': 10}, fontproperties='monospace')
-    plt.text(0.01, 0.6, str('Random Forest Test'), {
-             'fontsize': 10}, fontproperties='monospace')
-    plt.text(
-        0.01, 0.7, str(
-            classification_report(
-                y_train, y_train_preds_rf)), {
-            'fontsize': 10}, fontproperties='monospace')
-    plt.axis('off')
-    plt.savefig('images/results/rf_results.png')
-    plt.clf()
+    # fig = plt.rc('figure', figsize=(5, 5))
+    # plt.text(
+    #     0.01,
+    #     1.25,
+    #     str('Random Forest Train'),
+    #     {'fontsize': 10},
+    #     fontproperties = 'monospace'
+    #     )
+    # plt.text(
+    #     0.01,
+    #     0.05, 
+    #     str(classification_report(y_train, y_train_preds_rf)), 
+    #     {'fontsize': 10}, 
+    #     fontproperties = 'monospace'
+    #     ) # approach improved by OP -> monospace!
+    # plt.text(
+    #     0.01, 
+    #     0.6, 
+    #     str('Random Forest Test'), 
+    #     {'fontsize': 10}, 
+    #     fontproperties = 'monospace'
+    #     )
+    # plt.text(
+    #     0.01, 
+    #     0.7, 
+    #     str(classification_report(y_test, y_test_preds_rf)), 
+    #     {'fontsize': 10}, 
+    #     fontproperties = 'monospace'
+    #     ) # approach improved by OP -> monospace!
+    # plt.axis('off')
+    # plt.savefig('images/results/rf_results.png')
+    # plt.clf()
 
-    # Logistic Regression Results
-    plt.rc('figure', figsize=(5, 5))
-    plt.text(0.01, 1.25, str('Logistic Regression Train'),
-             {'fontsize': 10}, fontproperties='monospace')
-    plt.text(
-        0.01, 0.05, str(
-            classification_report(
-                y_train, y_train_preds_lr)), {
-            'fontsize': 10}, fontproperties='monospace')
-    plt.text(0.01, 0.6, str('Logistic Regression Test'), {
-             'fontsize': 10}, fontproperties='monospace')
-    plt.text(0.01, 0.7, str(classification_report(y_test, y_test_preds_lr)), {
-             'fontsize': 10}, fontproperties='monospace')
-    plt.axis('off')
-    plt.savefig('images/results/logistic_results.png')
-    plt.clf()
+    # # Logistic Regression Results
+    # plt.rc('figure', figsize=(5, 5))
+    # plt.text(
+    #     0.01,
+    #     1.25,
+    #     str('Logistic Regression Train'),
+    #     {'fontsize': 10},
+    #     fontproperties = 'monospace'
+    #     )
+    # plt.text(
+    #     0.01,
+    #     0.05, 
+    #     str(classification_report(y_train, y_train_preds_lr)), 
+    #     {'fontsize': 10}, 
+    #     fontproperties = 'monospace'
+    #     ) # approach improved by OP -> monospace!
+    # plt.text(
+    #     0.01, 
+    #     0.6, 
+    #     str('Logistic Regression Test'), 
+    #     {'fontsize': 10}, 
+    #     fontproperties = 'monospace'
+    #     )
+    # plt.text(
+    #     0.01, 
+    #     0.7, 
+    #     str(classification_report(y_test, y_test_preds_lr)), 
+    #     {'fontsize': 10}, 
+    #     fontproperties = 'monospace'
+    #     ) # approach improved by OP -> monospace!
+    # plt.axis('off')
+    # plt.savefig('images/results/lr_results.png')
+    # plt.clf()
+
+    report_metric_name_col = [
+        'class_0',
+        'class_1',
+        'accuracy',
+        'macro avg',
+        'weighted avg'
+    ]
+
+    rf_report = classification_report(
+        y_test, 
+        y_test_preds_rf, 
+        output_dict=True
+        )
+    rf_report = pd.DataFrame(rf_report).transpose()
+    rf_report['metric_name'] = report_metric_name_col
+    rf_report.to_csv('model_eval_metrics/rf_metrics.csv', index = False)
+
+    lr_report = classification_report(
+        y_test, 
+        y_test_preds_lr, 
+        output_dict=True
+        )
+    lr_report = pd.DataFrame(lr_report).transpose()
+    lr_report['metric_name'] = report_metric_name_col
+    lr_report.to_csv('model_eval_metrics/lr_metrics.csv', index = False)
+
 
 
 def feature_importance_plot(model, X_data: pd.DataFrame) -> None:
@@ -234,6 +305,7 @@ def feature_importance_plot(model, X_data: pd.DataFrame) -> None:
     shap.summary_plot(shap_values, X_data, plot_type="bar", show=False)
     plt.tight_layout()
     plt.savefig('images/results/feature_importance_shap.png')
+    plt.clf()
 
 
 def plot_roc_curve_and_save(rfc_model,
@@ -254,6 +326,7 @@ def plot_roc_curve_and_save(rfc_model,
     plot_roc_curve(rfc_model, X_test, y_test, ax=ax_plot_arg, alpha=0.8)
     plot_roc_curve(lrc_model, X_test, y_test, ax=ax_plot_arg)
     plt.savefig('images/results/roc_curve_result.png')
+    plt.clf()
 
 
 def train_models(X_train: pd.DataFrame,
