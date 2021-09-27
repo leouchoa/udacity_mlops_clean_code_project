@@ -13,7 +13,9 @@ Employing some code organization and readability can greatly improve our quality
 - self-explanatory code makes us quickly recap what was done and collaborate easier.
 - automated pipelines provides faster/safer ml models retraining. 
 
+## Project ML Pipeline Goal
 
+The ML goal of this project is to produce a pipeline to automatically create two machine learning models to 
 
 ## Running Files
 
@@ -77,3 +79,11 @@ For `python churn_library.py` you can expect your directory to be populated as i
 
 7 directories, 21 files
 ```
+
+
+# Goals
+
+- [] Improve the models performance metrics (fine-tuning)
+- [] "Pythonize" the code by encapsulating the functions in classes
+- [] Improve testing by fragmenting some test functions and adding more try/except blocks
+- [] Add a `global_vars.py` file to gather all global variables
