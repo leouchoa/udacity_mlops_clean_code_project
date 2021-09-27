@@ -109,5 +109,5 @@ For `python churn_library.py` you can expect your directory to be populated as i
 
 - [] Improve the models performance metrics (fine-tuning)
 - [] "Pythonize" the code by encapsulating the functions in classes
-- [] Improve testing by fragmenting some test functions and adding more try/except blocks
+- [] Improve testing by fragmenting some test functions and adding more (sensitive) try/except blocks
 - [] Add a `global_vars.py` file to gather all global variables
