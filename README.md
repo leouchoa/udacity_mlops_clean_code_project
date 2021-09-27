@@ -19,6 +19,20 @@ The ML goal of this project is to produce a pipeline to automatically create two
 
 ## Running Files
 
+### Create a Dedicate Env [Optional]
+
+Before running the files, it is recommended to create a dedicated environment to run the files. To do this you can:
+
+```
+conda create --name creative_env_name
+conda install pip
+pip install -r requirements.txt
+```
+
+where the `requirements.txt` within this root directory.
+
+### Main Files
+
 There are two main files to be run: 
 
 - `churn_library.py`: the file that runs all the model creating and report pipeline.
