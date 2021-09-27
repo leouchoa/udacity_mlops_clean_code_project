@@ -29,7 +29,7 @@ conda install pip
 pip install -r requirements.txt
 ```
 
-where the `requirements.txt` within this root directory.
+where the `requirements.txt` within this root directory. Also if you later want to remove this env you can just use `conda env remove -n creative_env_name`
 
 ### Main Files
 
