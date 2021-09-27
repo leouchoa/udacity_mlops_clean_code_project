@@ -77,7 +77,7 @@ def perform_eda(churn_df: pd.DataFrame) -> None:
 
     # plot+save total transaction count
     fig = plt.figure(figsize=(20, 10))
-    sns.distplot(churn_df['Total_Trans_Ct'])
+    sns.displot(churn_df['Total_Trans_Ct'])
     fig.savefig(
         'images/eda/total_transaction_distribution.png',
         bbox_inches='tight',
@@ -253,7 +253,7 @@ def plot_roc_curve_and_save(rfc_model,
     ax_plot_arg = plt.gca()
     plot_roc_curve(rfc_model, X_test, y_test, ax=ax_plot_arg, alpha=0.8)
     plot_roc_curve(lrc_model, X_test, y_test, ax=ax_plot_arg)
-    plt.savefig('/images/results/roc_curve_result.png')
+    plt.savefig('images/results/roc_curve_result.png')
 
 
 def train_models(X_train: pd.DataFrame,
@@ -280,7 +280,12 @@ def train_models(X_train: pd.DataFrame,
         'criterion': ['gini', 'entropy']
     }
 
-    cv_rfc = GridSearchCV(estimator=rfc, param_grid=param_grid, cv=5)
+    cv_rfc = GridSearchCV(
+        estimator=rfc, 
+        param_grid=param_grid, 
+        # cv=5
+        cv=2
+        )
     cv_rfc.fit(X_train, y_train)
 
     lrc.fit(X_train, y_train)
@@ -305,6 +310,11 @@ def train_models(X_train: pd.DataFrame,
                                 y_test_preds_rf)
 
     feature_importance_plot(rfc_model, X_test)
+
+    plot_roc_curve_and_save(rfc_model = rfc_model,
+                            lrc_model = lrc,
+                            X_test = X_test,
+                            y_test= y_test)
 
 
 if __name__ == "__main__":

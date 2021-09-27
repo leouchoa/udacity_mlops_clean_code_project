@@ -153,12 +153,12 @@ def test_train_models():
         X_train, X_test, y_train, y_test = cls.perform_feature_engineering(
             churn_df, response='Churn')
         cls.train_models(X_train, X_test, y_train, y_test)
-        assert os.path.isfile('/models/rfc_model.pkl')
-        assert os.path.isfile('/models/logistic_model.pkl')
+        assert os.path.isfile('models/rfc_model.pkl')
+        assert os.path.isfile('models/logistic_model.pkl')
         assert os.path.isfile('images/results/rf_results.png')
         assert os.path.isfile('images/results/logistic_results.png')
-        assert os.path.isfile('/images/results/feature_importances.png')
-        assert os.path.isfile('/images/results/roc_curve_result.png')
+        assert os.path.isfile('images/results/feature_importances.png')
+        assert os.path.isfile('images/results/roc_curve_result.png')
         logging.info("Testing test_train_models: SUCCESS")
     except AssertionError as err:
         logging.error(
