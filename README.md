@@ -22,6 +22,7 @@ The pipeline must automatically generate:
 - basic EDA plots (available in `images/eda/`)
 - model scoring object (available in `models/`)
 - model performance plots (available in `images/results/`)
+- model performance metrics (available in `model_eval_metrics/`)
 - model's variable importance plots (available in `images/results/`)
 - model's interpretability SHAP values plot (available in `images/results/`)
 - pipeline sucess/errors/warning logging (available in `logs/`)
