@@ -1,9 +1,18 @@
 # Predict Customer Churn
 
-- Project **Predict Customer Churn** of ML DevOps Engineer Nanodegree Udacity
+This is my solution to the **Predict Customer Churn** Project, of the [ML DevOps Engineer Nanodegree Udacity](https://www.udacity.com/course/machine-learning-dev-ops-engineer-nanodegree--nd0821). This aims to:
 
-## Project Description
-Your project description here.
+- Write a ML pipeline to predict churn, using [this](https://www.kaggle.com/sakshigoyal7/credit-card-customers/code) dataset
+- Make the code reusable, by following some code best practices.
+
+## Coding Best Practices
+
+Employing some code organization and readability can greatly improve our quality of life while coding, making it more pleasant. The idea is that early directories/codes structuring will make us work more at the beginning of the project, but in the long run will cause us to spend significant less time reducing [technical debt](https://www.productplan.com/glossary/technical-debt/). Here is a short list of its benefits:
+
+- automated unit/integration function testing allows faster debugging.
+- self-explanatory code makes us quickly recap what was done and collaborate easier.
+- automated pipelines provides faster/safer ml models retraining. 
+
 
 
 ## Running Files
