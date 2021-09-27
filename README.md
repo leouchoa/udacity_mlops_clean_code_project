@@ -15,7 +15,17 @@ Employing some code organization and readability can greatly improve our quality
 
 ## Project ML Pipeline Goal
 
-The ML goal of this project is to produce a pipeline to automatically create two machine learning models to 
+The ML goal of this project is to produce a pipeline to automatically create machine learning models to predict churn. The task, along with the dataset used, is better described [here](https://www.kaggle.com/sakshigoyal7/credit-card-customers/code). 
+
+The pipeline must automatically generate:
+
+- basic EDA plots (available in `images/eda/`)
+- model scoring object (available in `models/`)
+- model performance plots (available in `images/results/`)
+- model's variable importance plots (available in `images/results/`)
+- model's interpretability SHAP values plot (available in `images/results/`)
+- pipeline sucess/errors/warning logging (available in `logs/`)
+ 
 
 ## Running Files
 
