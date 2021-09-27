@@ -13,13 +13,13 @@ There are two main files to be run:
 - `churn_library.py`: the file that runs all the model creating and report pipeline.
 - `churn_script_logging_and_tests.py`: tests if the functions created in `churn_library.py` behave as intended to.
 
-To run the first, please use
+To run the **first**, please use
 
 ```
 python churn_library.py
 ```
 
-To run the second, you either run
+To run the **second**, you either run
 
 ```
 python churn_script_logging_and_tests.py
