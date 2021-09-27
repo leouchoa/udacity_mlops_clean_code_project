@@ -1,12 +1,9 @@
+$ pytest churn_script_logging_and_tests.py 
 ============================= test session starts ==============================
 platform linux -- Python 3.8.10, pytest-6.2.5, py-1.10.0, pluggy-1.0.0
-collected 5 items
+rootdir: /...../ udacity_mlops_clean_code_project
+collected 5 items                                                              
 
 churn_script_logging_and_tests.py .....                                  [100%]
 
-=============================== warnings summary ===============================
-churn_script_logging_and_tests.py::test_eda
-  `distplot` is a deprecated function and will be removed in a future version. Please adapt your code to use either `displot` (a figure-level function with similar flexibility) or `histplot` (an axes-level function for histograms).
-
--- Docs: https://docs.pytest.org/en/stable/warnings.html
-========================= 5 passed, 1 warning in 6.87s =========================
+======================== 5 passed in 418.58s (0:06:58) =========================
